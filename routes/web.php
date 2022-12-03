@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::resource('student','StudentController');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/delete/{id}', 'StudentController@destroy')->name('student.destroy');
+Route::post('/add_mark/{id}', 'StudentController@add_mark')->name('student.add_mark');
+Route::get('/pdf/{id}', 'PdfController@student_pdf')->name('pdf');
+Route::get('/export_excel', 'PdfController@export_excel')->name('export_excel');
